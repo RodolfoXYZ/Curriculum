@@ -1,26 +1,24 @@
-package service;
+package com.example.curriculum.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import model.CurriculumModel;
-import repository.CurriculumRepository;
+import com.example.curriculum.model.Curriculum;
+import com.example.curriculum.repository.CurriculumRepository;
 
 @Service
 public class CurriculumService {
+
     @Autowired
     CurriculumRepository repository;
-
-    public List<CurriculumModel> getAll(){
+    
+    public List<Curriculum> getAll(){
         return repository.findAll();
     }
-
-    public void insertCurriculum(CurriculumModel c){
+    public void insertACurriculum(Curriculum c){
         repository.save(c);
     }
-
     public void deleteCurriculum(int id){
         repository.deleteById(id);
     }

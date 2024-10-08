@@ -1,19 +1,15 @@
-package controller;
-
+package com.example.curriculum.controller;
+import org.springframework.web.bind.annotation.RestController;
+import com.example.curriculum.model.Curriculum;
+import com.example.curriculum.service.CurriculumService;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import model.CurriculumModel;
-import service.CurriculumService;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -23,9 +19,9 @@ public class CurriculoController {
 
 
     @PostMapping("/create")
-    public int insert(@RequestBody CurriculumModel entity) {
+    public int insert(@RequestBody Curriculum entity) {
         try{
-            service.insertCurriculum(entity);
+            service.insertACurriculum(entity);
             return 1;
         }
         catch(Exception e){
@@ -33,7 +29,7 @@ public class CurriculoController {
         }
     }
     @GetMapping("/getAll")
-    public List<CurriculumModel> select() {
+    public List<Curriculum> select() {
         
             return service.getAll();
         
@@ -48,5 +44,7 @@ public class CurriculoController {
         catch(Exception e){
             return false;
         }
-    } 
+    }
+
+    
 }
